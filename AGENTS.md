@@ -103,6 +103,11 @@ AI_MODEL=llama-3.2-3b-instruct
 3. Deploy to Vercel (add env vars in project settings)
 5. Add more features: i18n, blog, print CSS refinements
 
+### GitHub
+- Remote: `git@github.com:rakaishy/cv-project.git`
+- Default branch: `main`
+- Private repository
+
 ### Notes for agents
 - The main page (`src/app/page.tsx`) wraps all sections in `<div id="cv-content">`
 - The ChatButton is wrapped in `<div className="no-print">` so it's hidden during PDF export
