@@ -1,0 +1,145 @@
+{
+  "name": "Alejandro Guerrero Sivilla",
+  "title": "Senior Full-Stack Engineer",
+  "summary": "Passionate full-stack engineer with 15+ years of experience building scalable web applications. Expert in Angular, React, TypeScript, Node.js, Python and Java with a strong focus on developer experience, performance optimization, and AI-augmented workflows. Proven track record of leading cross-functional teams and delivering high-impact products from concept to production.",
+  "contact": {
+    "email": "alexhander2002@gmail.com",
+    "phone": "+52 (646) 123-8176",
+    "location": "Ensenada, Baja California",
+    "linkedin": "https://www.linkedin.com/in/alejandro-guerrero-sivill%C3%A1-b9b16758/",
+    "github": "https://github.com/rakaishy",
+    "website": "TODO"
+  },
+  "skills": [
+    { "name": "React", "level": "advanced", "category": "Frontend" },
+    { "name": "Angular", "level": "expert", "category": "Frontend" },
+    { "name": "TypeScript", "level": "expert", "category": "Languages" },
+    { "name": "Next.js", "level": "advanced", "category": "Frontend" },
+    { "name": "Node.js", "level": "expert", "category": "Backend" },
+    { "name": "Spring", "level": "advanced", "category": "Backend" },
+    { "name": "Spring Web", "level": "advanced", "category": "Backend" },
+    { "name": "Spring Boot", "level": "advanced", "category": "Backend" },
+    { "name": "Spring Security", "level": "advanced", "category": "Backend" },
+    { "name": "Tailwind CSS", "level": "intermediate", "category": "Frontend" },
+    { "name": "PostgreSQL", "level": "advanced", "category": "Database" },
+    { "name": "MongoDB", "level": "advanced", "category": "Database" },
+    { "name": "Docker", "level": "advanced", "category": "DevOps" },
+    { "name": "AWS", "level": "advanced", "category": "Cloud" },
+    { "name": "Google Cloud", "level": "intermediate", "category": "Cloud" },
+    { "name": "Azure", "level": "intermediate", "category": "Cloud" },
+    { "name": "Python", "level": "advanced", "category": "Languages" },
+    { "name": "Vue.js", "level": "intermediate", "category": "Frontend" },
+    { "name": "Java", "level": "advanced", "category": "Languages" },
+    { "name": "Kubernetes", "level": "intermediate", "category": "DevOps" },
+    { "name": "Redis", "level": "advanced", "category": "Database" },
+    { "name": "CI/CD", "level": "advanced", "category": "DevOps" },
+    { "name": "Terraform", "level": "advanced", "category": "DevOps" },
+    { "name": "Terragrunt", "level": "advanced", "category": "DevOps" },
+    { "name": "Copilot", "level": "advanced", "category": "GenAI" },
+    { "name": "OpenCode", "level": "intermediate", "category": "GenAI" },
+    { "name": "LangChain", "level": "advanced", "category": "AgenticAI" },
+    { "name": "LangGraph", "level": "advanced", "category": "AgenticAI" },
+    { "name": "LangSmith", "level": "advanced", "category": "AI flows" },
+    { "name": "Bedrock", "level": "intermediate", "category": "LLM Engines" },
+    { "name": "Ollama", "level": "advanced", "category": "LLM Engines" },
+    { "name": "Llama.cpp", "level": "advanced", "category": "LLM Engines" }
+  ],
+  "experience": [
+    {
+      "company": "TechCorp Inc.",
+      "position": "Senior Full-Stack Engineer",
+      "startDate": "2022-03",
+      "endDate": null,
+      "location": "San Francisco, CA",
+      "description": "Leading the frontend architecture team for a SaaS platform serving 500K+ users. Driving adoption of modern web technologies and AI-assisted development practices.",
+      "highlights": [
+        "Architected a micro-frontend system reducing deployment time by 60%",
+        "Built an AI-powered code review bot used by 50+ engineers across 4 teams",
+        "Migrated legacy Angular codebase to Next.js, improving Lighthouse scores from 45 to 92",
+        "Mentored 5 junior engineers through structured pair-programming sessions"
+      ],
+      "technologies": ["React", "TypeScript", "Next.js", "GraphQL", "PostgreSQL", "Docker", "AWS"]
+    },
+    {
+      "company": "DataFlow Systems",
+      "position": "Full-Stack Developer",
+      "startDate": "2019-06",
+      "endDate": "2022-02",
+      "location": "Austin, TX",
+      "description": "Core contributor on a data visualization platform used by Fortune 500 companies. Focused on real-time data processing and interactive charting.",
+      "highlights": [
+        "Designed and built a real-time collaborative editing system using WebSockets and CRDTs",
+        "Reduced bundle size by 55% through code-splitting and tree-shaking optimizations",
+        "Implemented a plugin architecture enabling third-party extensions to the platform",
+        "Wrote comprehensive E2E tests with Playwright, achieving 95% coverage on critical paths"
+      ],
+      "technologies": ["React", "TypeScript", "Node.js", "WebSockets", "Redis", "Python", "Kubernetes"]
+    },
+    {
+      "company": "StartupXYZ",
+      "position": "Junior Developer",
+      "startDate": "2017-01",
+      "endDate": "2019-05",
+      "location": "Remote",
+      "description": "Early engineer at a YC-backed startup building developer tools. Wore many hats and contributed across the entire stack.",
+      "highlights": [
+        "Built the MVP that secured $2M in seed funding within 6 months",
+        "Developed a real-time notification system handling 1M+ events daily",
+        "Created an internal CLI tool adopted by the entire engineering team",
+        "Contributed to open-source libraries used by the developer community"
+      ],
+      "technologies": ["Vue.js", "Node.js", "MongoDB", "AWS", "Docker", "Python"]
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of California, Berkeley",
+      "degree": "Bachelor of Science",
+      "field": "Computer Science",
+      "startDate": "2013-09",
+      "endDate": "2017-05",
+      "gpa": "3.8",
+      "highlights": [
+        "Dean's List (4 semesters)",
+        "Teaching Assistant for Web Development course",
+        "Hackathon winner — Built accessibility-focused browser extension"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "OpenDash",
+      "description": "Open-source dashboard framework for rapidly building internal tools. Features drag-and-drop layout, real-time data connectors, and a plugin ecosystem.",
+      "technologies": ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
+      "url": "https://opendash.io",
+      "github": "https://github.com/alexchen/opendash",
+      "highlights": [
+        "2.5K GitHub stars and 200+ forks",
+        "Used by 15+ companies in production",
+        "Featured on Hacker News front page"
+      ]
+    },
+    {
+      "name": "AI Commit Writer",
+      "description": "CLI tool that generates conventional commit messages using LLMs. Analyzes staged diffs and produces clear, descriptive commit messages.",
+      "technologies": ["TypeScript", "Node.js", "OpenAI API"],
+      "github": "https://github.com/alexchen/ai-commit",
+      "highlights": [
+        "500+ weekly downloads on npm",
+        "Integrates with husky for pre-commit hooks",
+        "Written entirely with AI-assisted development tools"
+      ]
+    },
+    {
+      "name": "Portfolio Optimizer",
+      "description": "ML-powered investment portfolio optimization tool. Uses modern portfolio theory with Monte Carlo simulations to suggest asset allocations.",
+      "technologies": ["Python", "React", "FastAPI", "Pandas", "Docker"],
+      "url": "https://portfolio-opt.app",
+      "github": "https://github.com/alexchen/portfolio-opt",
+      "highlights": [
+        "Built custom Monte Carlo simulation engine in Rust for 10x performance gain",
+        "Interactive charts with real-time what-if analysis"
+      ]
+    }
+  ]
+}
