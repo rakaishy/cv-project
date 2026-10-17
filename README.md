@@ -10,7 +10,7 @@ A modern, interactive CV/resume website built with **Next.js**, **TypeScript**, 
 | **TypeScript** | Type safety across the entire codebase |
 | **Tailwind CSS v4** | Utility-first styling with dark mode support |
 | **Framer Motion** | Scroll-triggered animations and micro-interactions |
-| **Vercel AI SDK** | Provider-agnostic AI streaming (OpenAI, Ollama, llama.cpp) |
+| **Vercel AI SDK** | Provider-agnostic chat completions (OpenAI, Ollama, llama.cpp) |
 | **html2canvas + jsPDF** | Client-side PDF generation matching page styles |
 
 ## Features
@@ -20,6 +20,8 @@ A modern, interactive CV/resume website built with **Next.js**, **TypeScript**, 
 - **PDF Export** — one-click download preserving the page's typography, colors, and layout
 - **Structured CV Data** — all content lives in `data/cv.json`, cleanly separated from UI logic
 - **Scroll Animations** — sections fade and slide into view as you scroll
+- **Dark Mode** — follows the system preference, with a manual toggle that persists
+- **Hardened chat endpoint** — server-side prompt, request validation, and per-IP rate limiting; the API key never reaches the browser
 
 ## Getting Started
 
@@ -67,7 +69,13 @@ Open [http://localhost:3000](http://localhost:3000) to see the result.
 
 ### 4. Customize with your own CV
 
-Edit `data/cv.json` with your personal information, experience, skills, and projects. The TypeScript types in `src/types/cv.ts` define the expected shape.
+Edit `data/cv.json` with your personal information, experience, skills, and projects. The TypeScript
+types in `src/types/cv.ts` define the expected shape.
+
+- Dates use `"YYYY-MM"` (for example `"2011-01"`) and are rendered as `Jan 2011`. Use `null` for the
+  current role so it shows as **Present**.
+- `education` and `projects` are **optional** — if you omit them (or leave them empty), the
+  Education and Projects sections are hidden automatically.
 
 ## Project Structure
 
@@ -77,23 +85,26 @@ cv-project/
 │   └── cv.json                  # Your CV data (edit this!)
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx           # Root layout with fonts and metadata
+│   │   ├── layout.tsx           # Root layout with fonts, metadata, theme script
 │   │   ├── page.tsx             # Main page composing all CV sections
 │   │   ├── globals.css          # Tailwind base + custom theme
 │   │   └── api/chat/
-│   │       └── route.ts         # Server endpoint proxying OpenAI
+│   │       └── route.ts         # Provider-agnostic, rate-limited chat endpoint
 │   ├── components/
 │   │   ├── cv/
-│   │   │   ├── Header.tsx       # Name, title, contact, PDF button
+│   │   │   ├── Header.tsx       # Name, title, contact, theme + PDF buttons
 │   │   │   ├── Summary.tsx      # Professional summary
 │   │   │   ├── Experience.tsx   # Work history timeline
-│   │   │   ├── Education.tsx    # Degrees and certifications
+│   │   │   ├── Education.tsx    # Degrees (hidden when cv.education is absent)
 │   │   │   ├── Skills.tsx       # Categorized skill tags with levels
-│   │   │   └── Projects.tsx     # Featured project cards
-│   │   └── ai/
-│   │       ├── ChatButton.tsx   # Floating action button
-│   │       ├── ChatDialog.tsx   # Slide-in chat panel
-│   │       └── ChatMessage.tsx  # Message bubble component
+│   │   │   └── Projects.tsx     # Featured projects (hidden when cv.projects is absent)
+│   │   ├── ai/
+│   │   │   ├── ChatButton.tsx   # Floating action button
+│   │   │   ├── ChatDialog.tsx   # Slide-in chat panel
+│   │   │   └── ChatMessage.tsx  # Message bubble component
+│   │   ├── icons/               # Self-contained SVG icon components
+│   │   └── ui/
+│   │       └── ThemeToggle.tsx  # Dark mode toggle
 │   ├── lib/
 │   │   ├── cv.ts                # CV data loader
 │   │   └── pdf.ts               # PDF generation utility

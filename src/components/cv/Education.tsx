@@ -16,7 +16,7 @@ function formatDate(date: string | null) {
 export default function Education() {
   const cv = getCV()
 
-  if (!cv.education) return null
+  if (!cv.education?.length) return null
 
   return (
     <motion.section

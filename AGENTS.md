@@ -37,9 +37,9 @@ cv-project/
 │   │   │   ├── Header.tsx              # Name, title, contact links, Save as PDF + ThemeToggle
 │   │   │   ├── Summary.tsx             # Professional summary
 │   │   │   ├── Experience.tsx          # Timeline with highlights + tech tags
-│   │   │   ├── Education.tsx           # Degree details (renders only if cv.education exists)
+│   │   │   ├── Education.tsx           # Degree details (renders only if cv.education has entries)
 │   │   │   ├── Skills.tsx              # Grouped by category, color-coded by level
-│   │   │   └── Projects.tsx            # Project cards with links (renders only if cv.projects exists)
+│   │   │   └── Projects.tsx            # Project cards with links (renders only if cv.projects has entries)
 │   │   └── ai/
 │   │       ├── ChatButton.tsx          # Floating FAB (fixed bottom-right)
 │   │       ├── ChatDialog.tsx          # Slide-in panel with message history
@@ -57,7 +57,7 @@ cv-project/
 - [x] Project scaffolded, dependencies installed
 - [x] CV types (`src/types/cv.ts`) and real CV content (`data/cv.json`)
 - [x] All 6 CV section components (Header, Summary, Experience, Education, Skills, Projects)
-- [x] `education` and `projects` are optional in `CV`; Education/Projects early-return `null` when absent
+- [x] `education` and `projects` are optional in `CV`; Education/Projects early-return `null` when absent or empty
 - [x] Scroll-triggered Framer Motion animations on all sections
 - [x] AI Chat: ChatButton → ChatDialog → ChatMessage + `/api/chat` route
 - [x] Chat copy derives the candidate's name from `getCV()` (no hardcoded names)

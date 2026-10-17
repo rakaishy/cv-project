@@ -7,7 +7,7 @@ import { GitHubIcon, ExternalLinkIcon } from "@/components/icons"
 export default function Projects() {
   const cv = getCV()
 
-  if (!cv.projects) return null
+  if (!cv.projects?.length) return null
 
   return (
     <motion.section
