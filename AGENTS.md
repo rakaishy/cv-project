@@ -129,7 +129,9 @@ AI_MODEL=llama-3.2-3b-instruct
 - Default branch: `main`
 - **Public repository** (required for GitHub Pages on the free plan)
 - Published site: **https://rakaishy.github.io/cv-project/** (Pages source: GitHub Actions)
-- Git identity is configured **repo-locally** (`rakaishy <alexhander2002@gmail.com>`), not globally
+- Git identity is configured **repo-locally** as `rakaishy <rakaishy@users.noreply.github.com>`, not
+  globally. Never commit with the personal Gmail address — the whole history was rewritten to this
+  noreply identity, and the repo is public
 
 ### Notes for agents
 - **Static export / GitHub Pages**: `next.config.ts` adds `output: "export"` + `basePath` only when
