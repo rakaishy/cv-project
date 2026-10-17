@@ -1,5 +1,8 @@
 # CV Project — Interactive Resume with AI Chat
 
+**Live site: [rakaishy.github.io/cv-project](https://rakaishy.github.io/cv-project/)**
+This repository holds the source code; the rendered CV is published at the link above.
+
 A modern, interactive CV/resume website built with **Next.js**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**. Features an AI chat assistant that answers questions about the candidate's background, and a PDF export with the same styling.
 
 ## Tech Stack
