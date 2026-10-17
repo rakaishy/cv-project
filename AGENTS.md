@@ -69,11 +69,12 @@ cv-project/
 - [x] Icons extracted to `src/components/icons/` (separate files per icon)
 - [x] Tailwind colors overridden with hex values (compatible with PDF rendering)
 - [x] PDF button loading indicator (spinner + "Exporting…" while generating)
-- [x] PDF uses `onclone` to fix SVG alignment (`currentColor` → computed color, explicit 16x16 dimensions, `inline-block` + `vertical-align: middle`)
-- [x] PDF uses `onclone` to center pill text (`display: flex; align-items: center` on rounded-md/rounded-full spans with py-0.5)
+- [x] PDF uses `onclone` to fix SVG alignment (`currentColor` → computed color, explicit box from `getBoundingClientRect`, `inline-block` + `vertical-align: middle`)
+- [x] PDF gives pill spans their natural line height in `onclone` so tag text keeps symmetric padding
+- [x] PDF page breaks snap to content-free rows, so text lines and tags are never sliced in half
 - [x] PDF excludes `.no-print` elements via `onclone` CSS + JS
 - [x] `xmlns` added to all 12 SVG icon components (required for html2canvas serialization)
-- [x] `leading-none` added to pill spans in Experience, Projects, Skills for consistent line-height
+- [x] `leading-none` added to pill spans in Experience, Projects, Skills for on-screen line-height (the PDF clone replaces it with `normal`)
 - [x] Contact text wrapped in `<span>` in Header for reliable DOM targeting in `onclone`
 - [x] Font loading wait (`document.fonts.ready`) before canvas capture for consistent metrics
 - [x] `npm run lint` clean and `npm run build` passes
@@ -140,9 +141,14 @@ AI_MODEL=llama-3.2-3b-instruct
   per-IP rate limit of 10 requests/minute (in-memory `Map`, so it is per server instance and resets on
   redeploy). Errors are returned as JSON `{ error }` with 400 (bad body), 429 (rate limit),
   502 (provider failure) or 503 (no API key), and `ChatDialog` surfaces that `error` text to the visitor
-- PDF uses html2canvas to capture `#cv-content` as a canvas, splits it across A4 pages (15mm margins),
+- PDF uses html2canvas to capture `#cv-content` as a canvas, then slices it across A4 pages (15mm margins),
   and always renders in light mode; `pdf.ts` removes the `dark` class and restores it afterwards.
-  The page-slice loop `break`s when a 2D context cannot be obtained (guards against an infinite loop)
+  Page breaks are **content-aware**: before cutting, `findBreakRow` scans the captured pixels upwards
+  from the ideal page end for a row with no content (`rgb <= 246` counts as content — the page
+  background is `#fafafa`/250 and tag backgrounds are `#f5f5f5`/245), so text lines and tags are never
+  sliced. If the page has no empty row (the Experience timeline border is continuous) it falls back to
+  the least-inked row. Search back stops at 60% of a page so unbreakable blocks cannot waste a page.
+  The inner loop `break`s when a 2D context cannot be obtained (guards against an infinite loop)
 - Icons are React components in `src/components/icons/` — each file returns JSX SVG, accepts `className`,
   and uses `currentColor` for dark mode support
 - `ThemeToggle` reads the `dark` class from `<html>` via `useSyncExternalStore` + `MutationObserver`
@@ -150,11 +156,19 @@ AI_MODEL=llama-3.2-3b-instruct
   button itself is `.no-print`, so the temporary class removal during PDF export is invisible
 - All Tailwind colors in `@theme inline` use hex values (not oklch) to avoid html2canvas compatibility issues
 - **PDF alignment fix (`src/lib/pdf.ts:onclone`)**: html2canvas 1.4.1 has poor flexbox + SVG support. The
-  `onclone` callback patches the cloned DOM before rendering: (1) replaces `currentColor` with computed
-  parent color on all SVGs, (2) sets explicit 16x16, `inline-block`, `vertical-align: middle` on SVGs,
-  (3) applies `align-items: center` on `.inline-flex.items-center` containers, (4) sets
-  `display: flex; align-items: center` on pill spans (`rounded-md`/`rounded-full` + `py-0.5`).
+  `onclone` callback patches the cloned DOM before rendering: (1) replaces `currentColor` with the SVG's
+  own computed color, (2) pins each SVG to its `getBoundingClientRect` box with `inline-block` +
+  `vertical-align: middle`, (3) applies `align-items: center` on `.inline-flex.items-center` containers,
+  (4) sets `line-height: normal` on pill spans (`rounded-md`/`rounded-full` + `py-0.5`).
   Also waits for `document.fonts.ready` + 200ms before capture
+- **Why pills need `line-height: normal`**: html2canvas positions glyphs at `Range.getClientRects()`
+  line-box top + font ascent, while browsers apply half-leading. With `leading-none` the line box (~1em)
+  is shorter than the glyph box (~1.2em), so the browser lifts the baseline but html2canvas does not —
+  the PDF text sits ~1px too low and eats the tag's bottom padding. The clone therefore uses the font's
+  natural line height, which makes both agree and restores symmetric padding
+- **`@media print` in `globals.css` is for browser printing only** (Ctrl+P), not for the Save-as-PDF
+  button: html2canvas renders the clone in screen media. It forces `font-size: 10pt`, makes tag/card
+  backgrounds transparent and disables rounded corners, and adds `break-inside: avoid` rules
 - **`.no-print` exclusion**: Elements with `no-print` class are hidden from PDF via both `onclone` CSS
   and JS. The PDF button and ThemeToggle in Header use this. ChatButton already has it
 - **SVG `xmlns`**: All 12 icon components include `xmlns="http://www.w3.org/2000/svg"` — required for
