@@ -49,6 +49,7 @@ cv-project/
 │   │   └── pdf.ts                      # html2canvas + jsPDF multi-page export
 │   └── types/
 │       └── cv.ts                       # TypeScript interfaces (Contact, Experience, etc.)
+├── .github/workflows/deploy-pages.yml   # Builds a static export and publishes to GitHub Pages
 ├── AGENTS.md
 └── README.md
 ```
@@ -77,6 +78,7 @@ cv-project/
 - [x] `leading-none` added to pill spans in Experience, Projects, Skills for on-screen line-height (the PDF clone replaces it with `normal`)
 - [x] Contact text wrapped in `<span>` in Header for reliable DOM targeting in `onclone`
 - [x] Font loading wait (`document.fonts.ready`) before canvas capture for consistent metrics
+- [x] GitHub Pages deployment via Actions (static export, `basePath` for the project site, `.nojekyll`)
 - [x] `npm run lint` clean and `npm run build` passes
 
 ### Build command
@@ -125,10 +127,23 @@ AI_MODEL=llama-3.2-3b-instruct
 ### GitHub
 - Remote: `git@github.com:rakaishy/cv-project.git`
 - Default branch: `main`
-- Private repository
+- **Public repository** (required for GitHub Pages on the free plan)
+- Published site: **https://rakaishy.github.io/cv-project/** (Pages source: GitHub Actions)
 - Git identity is configured **repo-locally** (`rakaishy <alexhander2002@gmail.com>`), not globally
 
 ### Notes for agents
+- **Static export / GitHub Pages**: `next.config.ts` adds `output: "export"` + `basePath` only when
+  `STATIC_EXPORT=true`. The Pages workflow (`.github/workflows/deploy-pages.yml`) sets
+  `STATIC_EXPORT=true`, `NEXT_PUBLIC_CHAT_ENABLED=false` and `NEXT_PUBLIC_BASE_PATH=/<repo>`, then
+  uploads `out/` after touching `out/.nojekyll` (Jekyll otherwise drops the `_next` directory).
+  Never hardcode the repo name — the workflow derives it from `github.event.repository.name`
+- **The `/api/chat` route does not exist in the static export.** Next 16 drops route handlers silently
+  with `output: "export"` (no error, no `out/api/`), so the chat would 404 for visitors. `page.tsx`
+  therefore renders `ChatButton` only when `NEXT_PUBLIC_CHAT_ENABLED !== "false"` — keep that guard, and
+  keep the chat working in `npm run dev`
+- Adding `basePath` means every asset is served from `/<repo>/_next/...`; verify with
+  `grep -o '/<repo>/_next/' out/index.html` after a static build. The PDF export is client-only and is
+  unaffected by `basePath`
 - The main page (`src/app/page.tsx`) wraps all sections in `<div id="cv-content">`
 - The ChatButton is wrapped in `<div className="no-print">` so it's hidden during PDF export
 - The `/api/chat` route is dynamic (server-rendered on demand); all other routes are static

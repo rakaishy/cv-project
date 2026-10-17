@@ -6,6 +6,10 @@ import Skills from "@/components/cv/Skills"
 import Projects from "@/components/cv/Projects"
 import ChatButton from "@/components/ai/ChatButton"
 
+// GitHub Pages is static-only, so the deployed build ships without the chat
+// (its /api/chat handler doesn't exist there). Local dev keeps it.
+const chatEnabled = process.env.NEXT_PUBLIC_CHAT_ENABLED !== "false"
+
 export default function Home() {
   return (
     <>
@@ -22,9 +26,11 @@ export default function Home() {
           <p>Built with Next.js, Tailwind CSS, and Framer Motion</p>
         </footer>
       </div>
-      <div className="no-print">
-        <ChatButton />
-      </div>
+      {chatEnabled && (
+        <div className="no-print">
+          <ChatButton />
+        </div>
+      )}
     </>
   )
 }

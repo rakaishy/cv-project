@@ -122,13 +122,48 @@ npm run build
 
 ## Deploy
 
-This project is ready to deploy on **Vercel** with zero configuration:
+### GitHub Pages (static)
+
+Pushing to `main` triggers `.github/workflows/deploy-pages.yml`, which builds a static export and
+publishes it to **https://rakaishy.github.io/cv-project/**.
+
+Two one-time repository settings are required:
+
+1. **Settings → General → Danger Zone → Change visibility → Public** — GitHub Pages on a private
+   repository requires a paid plan; on the free plan the repo must be public.
+2. **Settings → Pages → Build and deployment → Source: GitHub Actions** — without this the deploy step
+   fails with *"Get Pages site failed"*.
+
+After changing those, re-run the workflow (Actions tab → *Deploy CV to GitHub Pages* → Re-run), or push
+a new commit.
+
+The static build runs with:
+
+| Variable | Value | Why |
+|---|---|---|
+| `STATIC_EXPORT` | `true` | Emits `out/` instead of a server build |
+| `NEXT_PUBLIC_CHAT_ENABLED` | `false` | Pages can't run `/api/chat`, so the chat UI is not rendered |
+| `NEXT_PUBLIC_BASE_PATH` | `/<repo>` | Project sites are served from a subpath; without this every `_next/*` asset 404s |
+
+To preview the published build locally:
+
+```bash
+STATIC_EXPORT=true NEXT_PUBLIC_CHAT_ENABLED=false NEXT_PUBLIC_BASE_PATH=/cv-project npm run build
+npx serve out   # open http://localhost:3000/cv-project
+```
+
+The AI chat only runs where server code can execute (`npm run dev`, or a host like Vercel). It is
+deliberately absent from the Pages build.
+
+### Vercel (full app, chat included)
+
+The repo is also ready for Vercel with zero configuration, which is the way to keep the chat online:
 
 ```bash
 npx vercel
 ```
 
-Don't forget to add the required environment variables (`AI_API_KEY`, `AI_BASE_URL`, `AI_MODEL`) in your Vercel project settings.
+Add the AI provider variables (`AI_API_KEY`, `AI_BASE_URL`, `AI_MODEL`) in the Vercel project settings.
 
 ## License
 
