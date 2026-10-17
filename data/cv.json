@@ -7,8 +7,7 @@
     "phone": "+52 (646) 123-8176",
     "location": "Ensenada, Baja California",
     "linkedin": "https://www.linkedin.com/in/alejandro-guerrero-sivill%C3%A1-b9b16758/",
-    "github": "https://github.com/rakaishy",
-    "website": "TODO"
+    "github": "https://github.com/rakaishy"
   },
   "skills": [
     { "name": "React", "level": "advanced", "category": "Frontend" },
@@ -46,100 +45,109 @@
   ],
   "experience": [
     {
-      "company": "TechCorp Inc.",
-      "position": "Senior Full-Stack Engineer",
-      "startDate": "2022-03",
-      "endDate": null,
-      "location": "San Francisco, CA",
-      "description": "Leading the frontend architecture team for a SaaS platform serving 500K+ users. Driving adoption of modern web technologies and AI-assisted development practices.",
-      "highlights": [
-        "Architected a micro-frontend system reducing deployment time by 60%",
-        "Built an AI-powered code review bot used by 50+ engineers across 4 teams",
-        "Migrated legacy Angular codebase to Next.js, improving Lighthouse scores from 45 to 92",
-        "Mentored 5 junior engineers through structured pair-programming sessions"
-      ],
-      "technologies": ["React", "TypeScript", "Next.js", "GraphQL", "PostgreSQL", "Docker", "AWS"]
-    },
-    {
-      "company": "DataFlow Systems",
-      "position": "Full-Stack Developer",
-      "startDate": "2019-06",
-      "endDate": "2022-02",
-      "location": "Austin, TX",
-      "description": "Core contributor on a data visualization platform used by Fortune 500 companies. Focused on real-time data processing and interactive charting.",
-      "highlights": [
-        "Designed and built a real-time collaborative editing system using WebSockets and CRDTs",
-        "Reduced bundle size by 55% through code-splitting and tree-shaking optimizations",
-        "Implemented a plugin architecture enabling third-party extensions to the platform",
-        "Wrote comprehensive E2E tests with Playwright, achieving 95% coverage on critical paths"
-      ],
-      "technologies": ["React", "TypeScript", "Node.js", "WebSockets", "Redis", "Python", "Kubernetes"]
-    },
-    {
-      "company": "StartupXYZ",
-      "position": "Junior Developer",
-      "startDate": "2017-01",
-      "endDate": "2019-05",
+      "company": "Accenture",
+      "position": "Application Architect/Developer",
+      "startDate": "2024-08",
+      "endDate": "2026-02",
       "location": "Remote",
-      "description": "Early engineer at a YC-backed startup building developer tools. Wore many hats and contributed across the entire stack.",
+      "description": "Designed, implemented and integrated Legacy application migration to new standards and frameworks. Supported and corrected legacy systems to new standards and upgraded up to security standards to improve the current systems for real time process and communication between engineer teams. Integrated new systems to consume and leverage new ai systems designed to retrieve, catalog and control documentation.",
       "highlights": [
-        "Built the MVP that secured $2M in seed funding within 6 months",
-        "Developed a real-time notification system handling 1M+ events daily",
-        "Created an internal CLI tool adopted by the entire engineering team",
-        "Contributed to open-source libraries used by the developer community"
+        "While designing and implementing, improved security-related practices",
+        "Strengthened Maintenance and communication processes.",
+        "Introduced architectures for data management, access, and protection.",
+        "Researched and introduced best practices for the usage of AI in our current processes and documentation.",
+        "Introduced new practices for the leverage of agentic AI on our development process without reducing the code quality and security."
       ],
-      "technologies": ["Vue.js", "Node.js", "MongoDB", "AWS", "Docker", "Python"]
-    }
-  ],
-  "education": [
-    {
-      "institution": "University of California, Berkeley",
-      "degree": "Bachelor of Science",
-      "field": "Computer Science",
-      "startDate": "2013-09",
-      "endDate": "2017-05",
-      "gpa": "3.8",
-      "highlights": [
-        "Dean's List (4 semesters)",
-        "Teaching Assistant for Web Development course",
-        "Hackathon winner — Built accessibility-focused browser extension"
-      ]
-    }
-  ],
-  "projects": [
-    {
-      "name": "OpenDash",
-      "description": "Open-source dashboard framework for rapidly building internal tools. Features drag-and-drop layout, real-time data connectors, and a plugin ecosystem.",
-      "technologies": ["React", "TypeScript", "Node.js", "PostgreSQL", "Docker"],
-      "url": "https://opendash.io",
-      "github": "https://github.com/alexchen/opendash",
-      "highlights": [
-        "2.5K GitHub stars and 200+ forks",
-        "Used by 15+ companies in production",
-        "Featured on Hacker News front page"
-      ]
+      "technologies": ["React", "TypeScript", "Next.js", "GraphQL", "PostgreSQL", "Docker", "Azure", "WebLogic", "Java", "Spring"]
     },
     {
-      "name": "AI Commit Writer",
-      "description": "CLI tool that generates conventional commit messages using LLMs. Analyzes staged diffs and produces clear, descriptive commit messages.",
-      "technologies": ["TypeScript", "Node.js", "OpenAI API"],
-      "github": "https://github.com/alexchen/ai-commit",
+      "company": "Accenture",
+      "position": "Application Sr Developer/Security Manager",
+      "startDate": "2022-06",
+      "endDate": "2024-08",
+      "location": "Remote",
+      "description": "Supported new solutions to improve the security and availability of multiple platforms using cloud technologies, enabling recovery from disaster scenarios during high-demand periods. Reinforced the automation of processes and helped to improve the usage of Infrastructure as Code (IaC) within the project. Designed and implemented multiple solutions to allow different providers from Europe and the US to consume the identity platform Cognito, also enabling integration with multiple solutions for the delivery of publicity and communications.",
       "highlights": [
-        "500+ weekly downloads on npm",
-        "Integrates with husky for pre-commit hooks",
-        "Written entirely with AI-assisted development tools"
-      ]
+        "While designing and implementing, improved security-related practices.",
+        "Strengthened AWS and Kafka-related processes. Introduced new practices for data management, access, and protection.",
+        "Gained knowledge in the usage of Terraform/Terragrunt.",
+        "Researched and introduced best practices for the usage of AI in our development and design processes."
+      ],
+      "technologies": ["Terraform", "Terragrunt", "Node.js", "MongoDB", "AWS", "Docker", "Python", "PostgreSQL", "TypeScript"]
     },
     {
-      "name": "Portfolio Optimizer",
-      "description": "ML-powered investment portfolio optimization tool. Uses modern portfolio theory with Monte Carlo simulations to suggest asset allocations.",
-      "technologies": ["Python", "React", "FastAPI", "Pandas", "Docker"],
-      "url": "https://portfolio-opt.app",
-      "github": "https://github.com/alexchen/portfolio-opt",
+      "company": "Accenture",
+      "position": "Sr Developer",
+      "startDate": "2020-09",
+      "endDate": "2022-06",
+      "location": "Remote",
+      "description": "Coordinated an offshore team in India/Texas to implement and integrate multiple solutions using Angular, Ngrx, NodeJs, Pub/Sub, Gcloud, OSDU, SQL. Contributed to the development and improvement of multiple modules focused on the synchronization of data and behavior between multiple applications. Delivered multiple mechanisms to communicate data changes on high-volume transactions. Improved code quality by enforcing unit testing standards and introducing concepts such as TDD and clear naming conventions.",
       "highlights": [
-        "Built custom Monte Carlo simulation engine in Rust for 10x performance gain",
-        "Interactive charts with real-time what-if analysis"
-      ]
+        "During the development improved their leading and coordination skills",
+        "Increased TypeScript expertise",
+        "Improved practices of unit testing with Jest.",
+        "Increased Angular expertise.",
+        "Gained Ngrx knowledge.",
+        "Gained OSDU knowledge."
+      ],
+      "technologies": ["Ngrx", "OSDU", "Node.js", "MongoDB", "GoogleCloud", "Docker", "Python", "PostgreSQL", "TypeScript", "Angular"]
+    },
+    {
+      "company": "Softek",
+      "position": "Senior Developer / Team Lead",
+      "startDate": "2017-07",
+      "endDate": "2020-08",
+      "location": "Ensenada, Baja California",
+      "description": "Ranked up to senior developer, taking the lead of a team of developers and DevOps engineers to design and deliver applications covering multiple business cases, always with a strong focus on applying and supporting the best security practices possible.",
+      "highlights": [
+        "Led a team of developers and DevOps engineers.",
+        "Designed and delivered applications covering multiple business cases.",
+        "Established security-focused practices across design and delivery.",
+        "Coordinated development and infrastructure work to keep releases reliable."
+      ],
+      "technologies": ["TypeScript", "Angular", "Node.js", "AWS", "Docker", "CI/CD"]
+    },
+    {
+      "company": "Softek",
+      "position": "Full-Stack Developer",
+      "startDate": "2015-07",
+      "endDate": "2017-06",
+      "location": "Ensenada, Baja California",
+      "description": "Promoted to proficient developer, developing web applications for an international gym firm and taking ownership of all steps of delivery while continuing to learn and support the best security practices possible.",
+      "highlights": [
+        "Developed web applications for an international gym company.",
+        "Owned features end to end, from design through release.",
+        "Kept security best practices central to every stage of delivery."
+      ],
+      "technologies": ["TypeScript", "Angular", "Node.js", "PostgreSQL", "Docker"]
+    },
+    {
+      "company": "Softek",
+      "position": "Junior Full-Stack Developer",
+      "startDate": "2011-01",
+      "endDate": "2015-06",
+      "location": "Ensenada, Baja California",
+      "description": "Helped develop custom software for a large B2B platform, contributing across the full stack and learning every step of the delivery process while supporting the best security practices possible.",
+      "highlights": [
+        "Built custom software for a large B2B platform, working across the full stack.",
+        "Participated in every step of the process, from design to delivery.",
+        "Supported security best practices throughout the development lifecycle."
+      ],
+      "technologies": ["JavaScript", "Node.js", "SQL", "Git"]
+    },
+    {
+      "company": "Accounting Firm",
+      "position": "IT Manager",
+      "startDate": "2009-01",
+      "endDate": "2010-12",
+      "location": "Ensenada, Baja California",
+      "description": "Managed the IT operations of an accounting firm, administering internal systems, network infrastructure, and workstations while supporting the day-to-day technical needs of the accounting team and protecting sensitive financial information.",
+      "highlights": [
+        "Administered internal systems, backups, and network infrastructure.",
+        "Provided technical support to accounting staff.",
+        "Applied security best practices to protect sensitive financial data."
+      ],
+      "technologies": ["Windows", "Networking", "SQL", "Security"]
     }
   ]
 }

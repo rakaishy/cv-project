@@ -16,6 +16,8 @@ function formatDate(date: string | null) {
 export default function Education() {
   const cv = getCV()
 
+  if (!cv.education) return null
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}

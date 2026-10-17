@@ -7,6 +7,8 @@ import { GitHubIcon, ExternalLinkIcon } from "@/components/icons"
 export default function Projects() {
   const cv = getCV()
 
+  if (!cv.projects) return null
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}

@@ -50,6 +50,6 @@ export interface CV {
   contact: Contact
   skills: Skill[]
   experience: Experience[]
-  education: Education[]
-  projects: Project[]
+  education?: Education[]
+  projects?: Project[]
 }
