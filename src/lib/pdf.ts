@@ -1,6 +1,8 @@
 import html2canvas from "html2canvas"
 import jsPDF from "jspdf"
 
+import { getCV } from "./cv"
+
 /** A pixel counts as content when any channel is at or below this value.
  *  The light-mode page background is #fafafa (250) and the tag/badge
  *  background is #f5f5f5 (245), so 246 treats the page background as empty
@@ -37,6 +39,23 @@ function findBreakRow(imageData: ImageData, width: number, idealEnd: number, min
   }
 
   return best
+}
+
+/**
+ * Download name derived from the CV: `cv_Alejandro_Guerrero_Sivilla.pdf`.
+ *
+ * The candidate's name is split on anything that is not a letter or a digit,
+ * so spaces, punctuation and accents all collapse to single underscores
+ * ("Sivillá" -> "Sivilla"). Falls back to `cv.pdf` when no name is set.
+ */
+function pdfFileName(): string {
+  const slug = (getCV().name ?? "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^A-Za-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "")
+
+  return slug ? `cv_${slug}.pdf` : "cv.pdf"
 }
 
 export async function generatePDF(): Promise<void> {
@@ -155,7 +174,7 @@ export async function generatePDF(): Promise<void> {
       srcY = endY
     }
 
-    pdf.save("cv.pdf")
+    pdf.save(pdfFileName())
   } finally {
     style.remove()
     if (wasDark) html.classList.add("dark")

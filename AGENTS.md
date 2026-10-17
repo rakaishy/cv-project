@@ -79,6 +79,7 @@ cv-project/
 - [x] Contact text wrapped in `<span>` in Header for reliable DOM targeting in `onclone`
 - [x] Font loading wait (`document.fonts.ready`) before canvas capture for consistent metrics
 - [x] GitHub Pages deployment via Actions (static export, `basePath` for the project site, `.nojekyll`)
+- [x] PDF saves as `cv_<Candidate_Name>.pdf` (name read from `cv.json`, non-alphanumerics → `_`)
 - [x] `npm run lint` clean and `npm run build` passes
 
 ### Build command
