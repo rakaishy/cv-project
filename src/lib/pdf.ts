@@ -60,7 +60,6 @@ export async function generatePDF(): Promise<void> {
   style.remove()
   if (wasDark) html.classList.add("dark")
 
-  const imgData = canvas.toDataURL("image/png")
   const pdf = new jsPDF("p", "mm", "a4")
   const pageWidth = pdf.internal.pageSize.getWidth()
   const pageHeight = pdf.internal.pageSize.getHeight()
@@ -78,7 +77,7 @@ export async function generatePDF(): Promise<void> {
     pageCanvas.width = canvas.width
     pageCanvas.height = (h * canvas.width) / contentWidth
     const ctx = pageCanvas.getContext("2d")
-    if (!ctx) continue
+    if (!ctx) break
 
     ctx.drawImage(
       canvas,

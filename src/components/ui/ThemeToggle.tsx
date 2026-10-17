@@ -1,25 +1,29 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useSyncExternalStore } from "react"
 import { SunIcon, MoonIcon } from "@/components/icons"
 
-export default function ThemeToggle() {
-  const [dark, setDark] = useState(false)
+function subscribe(callback: () => void) {
+  const observer = new MutationObserver(callback)
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] })
+  return () => observer.disconnect()
+}
 
-  useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"))
-  }, [])
+function getSnapshot() {
+  return document.documentElement.classList.contains("dark")
+}
+
+function getServerSnapshot() {
+  return false
+}
+
+export default function ThemeToggle() {
+  const dark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
   function toggle() {
-    const next = !dark
-    setDark(next)
-    if (next) {
-      document.documentElement.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-    } else {
-      document.documentElement.classList.remove("dark")
-      localStorage.setItem("theme", "light")
-    }
+    const next = !document.documentElement.classList.contains("dark")
+    document.documentElement.classList.toggle("dark", next)
+    localStorage.setItem("theme", next ? "dark" : "light")
   }
 
   return (

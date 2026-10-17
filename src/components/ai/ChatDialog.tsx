@@ -16,19 +16,14 @@ interface Props {
   onClose: () => void
 }
 
-function buildSystemPrompt(): string {
-  const cv = getCV()
-  return `You are a helpful AI assistant helping visitors learn about Alex Chen's professional background. You have access to their full CV data below. Answer questions concisely and accurately based only on this information. If you don't know something, say so.
-
-CV Data:
-${JSON.stringify(cv, null, 2)}`
-}
+const { name: cvName } = getCV()
+const firstName = cvName.split(" ")[0]
 
 export default function ChatDialog({ open, onClose }: Props) {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm an AI assistant here to help you learn about Alex Chen's background, skills, and experience. What would you like to know?",
+      content: `Hi! I'm an AI assistant here to help you learn about ${cvName}'s background, skills, and experience. What would you like to know?`,
     },
   ])
   const [input, setInput] = useState("")
@@ -59,15 +54,19 @@ export default function ChatDialog({ open, onClose }: Props) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: [...messages, userMessage],
-          systemPrompt: buildSystemPrompt(),
-        }),
+        body: JSON.stringify({ messages: [...messages, userMessage] }),
       })
 
-      if (!res.ok) throw new Error("Failed to fetch")
+      const data = await res.json().catch(() => null)
 
-      const data = await res.json()
+      if (!res.ok) {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: data?.error || "Sorry, I encountered an error. Please try again." },
+        ])
+        return
+      }
+
       setMessages((prev) => [...prev, { role: "assistant", content: data.content }])
     } catch {
       setMessages((prev) => [
@@ -103,7 +102,7 @@ export default function ChatDialog({ open, onClose }: Props) {
                   AI
                 </div>
                 <span className="text-sm font-medium text-neutral-900 dark:text-white">
-                  Ask about Alex
+                  Ask about {firstName}
                 </span>
               </div>
               <button
